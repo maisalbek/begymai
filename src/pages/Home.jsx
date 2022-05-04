@@ -51,7 +51,7 @@ const Home = () => {
             alt=""
           />
           <div>
-            <p className="cherez">Через сайт registratura.kg</p>
+            <p className="cherez">Через сайт https://begymai.vercel.app</p>
           </div>
         </div>
         {/* ---------------------------------------------------- */}

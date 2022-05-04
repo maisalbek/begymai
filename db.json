@@ -1,0 +1,44 @@
+{
+  "doctors": [
+    {
+      "name": "Maisalbek",
+      "surname": "Karimov",
+      "midName": "Asanovic",
+      "age": "20",
+      "photo": "https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop",
+      "phone": "0702041009",
+      "category": "Хирург",
+      "id": 1
+    },
+    {
+      "name": "Alex",
+      "surname": "Sir",
+      "midName": "Brown",
+      "age": "23",
+      "photo": "https://familydoctor.org/wp-content/uploads/2018/02/41808433_l.jpg",
+      "phone": "0999274625",
+      "category": "Стомотолог",
+      "id": 3
+    },
+    {
+      "name": "Tom",
+      "surname": "Sir",
+      "midName": "Brown",
+      "age": "23",
+      "photo": "https://media.istockphoto.com/photos/doctor-holding-digital-tablet-at-meeting-room-picture-id1189304032?k=20&m=1189304032&s=612x612&w=0&h=ovTNnR0JX2cRZkzMBed9exRO_PamZLlysLDFkXesr4Q=",
+      "phone": "0999274625",
+      "category": "Детский врач",
+      "id": 5
+    },
+    {
+      "name": "Alex",
+      "surname": "Nake",
+      "midName": "Brown",
+      "age": "23",
+      "photo": "https://images.squarespace-cdn.com/content/v1/55bfee76e4b01b70e61ecf58/1456938489776-FMDO8YYFG90A2N354CCU/image-asset.jpeg?format=2500w",
+      "phone": "0999274625",
+      "category": "Детский врач",
+      "id": 6
+    }
+  ]
+}

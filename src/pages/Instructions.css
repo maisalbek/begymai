@@ -1,0 +1,146 @@
+.cont {
+  background: url(../components/images/20504185.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  overflow-x: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.blocks {
+  display: flex !important;
+  align-items: center !important;
+}
+.one {
+  justify-content: flex-start !important;
+}
+.two {
+  justify-content: center !important;
+}
+.three {
+  justify-content: flex-end !important;
+}
+.step1 {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  animation: pulse 2s infinite;
+  border-radius: 20px;
+  align-items: center;
+}
+.step1 p {
+  margin: 0;
+}
+.innerone {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+@keyframes pulse {
+  0% {
+    background-color: rgb(177, 166, 147);
+  }
+  50% {
+    background-color: rgb(164, 157, 146);
+  }
+  100% {
+    background-color: rgb(143, 135, 125);
+  }
+}
+.step1:hover {
+  position: relative;
+  padding-right: 70px;
+  transition: 0.6s;
+}
+.step2 {
+  padding: 50px 100px;
+  display: flex;
+  flex-direction: column;
+  animation: pulse 2s infinite;
+  border-radius: 20px;
+  align-items: center;
+}
+.step2 p {
+  margin: 0;
+}
+.step2:hover {
+  padding-right: 140px;
+  padding-left: 140px;
+  transition: 0.6s;
+}
+.step3 {
+  padding: 40px 100px;
+  display: flex;
+  flex-direction: column;
+  animation: pulse 2s infinite;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.step3 p {
+  margin: 0;
+}
+.step3:hover {
+  padding-left: 140px;
+  transition: 0.6s;
+}
+p {
+  font-size: 20px;
+}
+#step1 {
+  font-size: 25px;
+}
+@media all and (max-width: 450px) {
+  .step1 {
+    margin-top: 10px !important;
+    margin: 20px 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    animation: pulse 2s infinite;
+    border-radius: 20px;
+    align-items: center;
+  }
+
+  .step1 p,
+  .step1 div p {
+    font-size: 15px !important;
+  }
+  .step2 p,
+  .step2 div p {
+    font-size: 15px !important;
+  }
+  .step3 p,
+  .step3 div p {
+    font-size: 15px !important;
+  }
+  .step2 {
+    margin-top: 10px !important;
+    margin: 20px 10px;
+    padding: 20px 85px;
+    display: flex;
+    flex-direction: column;
+    animation: pulse 2s infinite;
+    border-radius: 20px;
+    align-items: center;
+  }
+  .step3 {
+    margin-top: 10px !important;
+    margin: 20px 10px;
+    padding: 20px 60px;
+    display: flex;
+    flex-direction: column;
+    animation: pulse 2s infinite;
+    border-radius: 20px;
+    align-items: center;
+  }
+  .step3 .innerone {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+  }
+}

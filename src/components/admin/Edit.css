@@ -1,0 +1,12 @@
+.editcont {
+  width: 100%;
+  height: 100vh;
+  background: url(../images/20504185.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap");
+.navbar-container {
+  background-color: rgb(45, 22, 0) !important;
+}
+.btn {
+  margin-left: 20px !important;
+  font-family: "Raleway", sans-serif !important;
+}
+.active {
+  border-bottom: 1px solid rgb(253, 170, 61) !important;
+  padding-bottom: 3px !important;
+}
+.logout {
+  font-size: 20px !important;
+  padding-left: 60px !important;
+}

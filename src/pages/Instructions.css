@@ -143,4 +143,8 @@ p {
     align-items: flex-start !important;
     justify-content: center !important;
   }
+  .blocks {
+    display: flex !important;
+    flex-direction: column !important;
+  }
 }

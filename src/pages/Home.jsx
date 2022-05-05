@@ -11,13 +11,7 @@ const Home = () => {
   return (
     <div>
       <div id="section1" className="section-1 box">
-        <div
-          style={{
-            borderStyle: "solid",
-            padding: "20px",
-            margin: "0 10px 20px 10px",
-          }}
-        >
+        <div className="border">
           <h1 className="hometitle">Онлайн запись на прием к врачу</h1>
           <h2 className="hometitle2">Сэкономьте свое время!</h2>
         </div>

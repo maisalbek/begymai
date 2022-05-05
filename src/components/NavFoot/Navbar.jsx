@@ -8,7 +8,7 @@ import Menu from "@mui/material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Button } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import HomeIcon from "@mui/icons-material/Home";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
@@ -19,6 +19,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import LoginIcon from "@mui/icons-material/Login";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useNavigate } from "react-router-dom";
 
 import "./Navbar.css";
 import { useAuth } from "../AuthContextProvider";
@@ -283,11 +284,13 @@ export default function Navbar() {
       <AppBar position="static" className="navbar-container">
         <Toolbar>
           <Box sx={{ width: "40px" }} />
-          <img
-            width="40px"
-            src="https://www.pngkey.com/png/full/33-337638_medicine-logo-png-1-medical-logo.png"
-            alt=""
-          />
+          <Button component={Link} to="/">
+            <img
+              width="40px"
+              src="https://www.pngkey.com/png/full/33-337638_medicine-logo-png-1-medical-logo.png"
+              alt=""
+            />
+          </Button>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
@@ -395,7 +398,7 @@ export default function Navbar() {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {renderMenu};
+      {renderMenu}
     </Box>
   );
 }

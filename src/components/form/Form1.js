@@ -34,7 +34,6 @@ function Form1() {
   };
 
   const sendEmail = (formData) => {
-    addData(formData);
     emailjs
       .send(
         "service_yonxp8k",
@@ -44,6 +43,7 @@ function Form1() {
       )
       .then(
         (result) => {
+          addData(formData);
           console.log(result.text);
         },
         (error) => {

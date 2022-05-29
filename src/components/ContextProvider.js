@@ -11,6 +11,7 @@ const INIT_STATE = {
   data: [],
   objForEdit: null,
   doctorName: [],
+  doctorName2: [],
 };
 function reducer(state = INIT_STATE, action) {
   switch (action.type) {
@@ -33,6 +34,11 @@ function reducer(state = INIT_STATE, action) {
       return {
         ...state,
         doctorName: action.payload,
+      };
+    case "GET_NAMES2":
+      return {
+        ...state,
+        doctorName2: action.payload,
       };
     default:
       return state;
@@ -67,15 +73,33 @@ const ContextProvider = ({ children }) => {
   const getNames = async () => {
     try {
       let res = await axios.get(API);
-      let names = [];
-      res.data.filter((item) => {
-        names.push(
-          [item.surname, item.name, item.midName, item.category].join(" ")
-        );
-      });
+
+      let filteredArr = res.data.reduce((acc, current) => {
+        let x = acc.find((item) => item.category === current.category);
+        if (!x) {
+          return acc.concat([current]);
+        } else {
+          return acc;
+        }
+      }, []);
+
       dispatch({
         type: "GET_NAMES",
-        payload: names,
+        payload: filteredArr,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const getNames2 = async (obj) => {
+    try {
+      let res = await axios.get(API);
+      let newArr = res.data.filter((item) => {
+        return item.category === obj.category;
+      });
+      dispatch({
+        type: "GET_NAMES2",
+        payload: newArr,
       });
     } catch (err) {
       console.log(err);
@@ -144,6 +168,7 @@ const ContextProvider = ({ children }) => {
         data: state.data,
         objForEdit: state.objForEdit,
         doctorName: state.doctorName,
+        doctorName2: state.doctorName2,
         getDoctor,
         getData,
         addDoctor,
@@ -153,6 +178,7 @@ const ContextProvider = ({ children }) => {
         idForEdit,
         saveDoctor,
         getNames,
+        getNames2,
       }}
     >
       {children}

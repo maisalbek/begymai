@@ -5,29 +5,38 @@ import MenuItem from "@mui/material/MenuItem";
 import { useDContext } from "../ContextProvider";
 
 function PersonalInfo({ formData, setFormData }) {
-  const { getNames, doctorName } = useDContext();
+  const { getNames, getNames2, doctorName } = useDContext();
   useEffect(() => {
     getNames();
   }, []);
   useEffect(() => {
-    getNames();
-  }, []);
+    getNames2(formData);
+  }, [formData]);
+
+  const handleChangle = (e) => {
+    let obj = { ...formData, category: e.target.value };
+    setFormData(obj);
+    if (formData) {
+      getNames2(formData);
+    }
+  };
+
   return (
     <div className="personal-info-container">
       <TextField
         id="outlined-select-currency"
         select
-        label="Выберите специалиста"
-        value={formData.doctor}
+        label="Выберите врача"
+        value={formData.category}
         onChange={(e) => {
-          setFormData({ ...formData, doctor: e.target.value });
+          handleChangle(e);
         }}
         fullWidth
       >
         {doctorName &&
           doctorName.map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
+            <MenuItem key={option.id} value={option.category}>
+              {option.category}
             </MenuItem>
           ))}
       </TextField>

@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import SignUpInfo from "./SignUpInfo";
 import PersonalInfo from "./PersonalInfo";
+import PersonalInfo2 from "./PersonalInfo2";
 import OtherInfo from "./OtherInfo";
 import emailjs from "emailjs-com";
 import "./Form.css";
@@ -17,17 +18,25 @@ function Form1() {
     PIN: "",
     number: "",
     doctor: "",
+    category: "",
     date: "",
     time: "",
   });
 
-  const FormTitles = ["Вашы данные", "Выберите специалиста", "Выбор даты"];
+  const FormTitles = [
+    "Вашы данные",
+    "Выберите врача",
+    "Выберите специалиста",
+    "Выбор даты",
+  ];
 
   const PageDisplay = () => {
     if (page === 0) {
       return <SignUpInfo formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
       return <PersonalInfo formData={formData} setFormData={setFormData} />;
+    } else if (page === 2) {
+      return <PersonalInfo2 formData={formData} setFormData={setFormData} />;
     } else {
       return <OtherInfo formData={formData} setFormData={setFormData} />;
     }
@@ -56,7 +65,16 @@ function Form1() {
     <div className="form">
       <div className="progressbar">
         <div
-          style={{ width: page === 0 ? "33.3%" : page == 1 ? "66.6%" : "100%" }}
+          style={{
+            width:
+              page === 0
+                ? "25%"
+                : page == 1
+                ? "50%"
+                : page == 2
+                ? "75%"
+                : "100%",
+          }}
         ></div>
       </div>
       <div className="form-container">

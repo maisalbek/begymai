@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AddDoctor from "../components/admin/AddDoctor";
 import AdminDoctors from "../components/admin/AdminDoctors";
 import "./Admin.css";
 
 const Admin = () => {
   const [addModal, setAddModal] = useState(false);
+  const [db, setDb] = useState(false);
+  const navigate = useNavigate();
   function toggle() {
     addModal ? setAddModal(false) : setAddModal(true);
   }
@@ -18,13 +21,38 @@ const Admin = () => {
         alignItems: "center",
       }}
     >
-      <div style={{ width: "320px", padding: "10px 0" }}>
-        <img
-          width="80px"
-          onClick={() => toggle()}
-          src="https://www.picng.com/upload/plus/png_plus_52143.png"
-          alt=""
-        />
+      <div
+        style={{
+          width: "320px",
+          padding: "10px 0",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            width="80px"
+            onClick={() => toggle()}
+            src="https://www.picng.com/upload/plus/png_plus_52143.png"
+            alt=""
+          />
+          <button
+            style={{
+              width: "65px",
+              height: "65px",
+              backgroundColor: "black",
+              color: "#c2c1be",
+              borderRadius: "50%",
+            }}
+            onClick={() => navigate("/db")}
+          >
+            База данных
+          </button>
+        </div>
         {addModal ? <AddDoctor /> : null}
       </div>
       <AdminDoctors />

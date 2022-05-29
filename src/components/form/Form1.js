@@ -5,8 +5,10 @@ import PersonalInfo from "./PersonalInfo";
 import OtherInfo from "./OtherInfo";
 import emailjs from "emailjs-com";
 import "./Form.css";
+import { useDContext } from "../ContextProvider";
 
 function Form1() {
+  const { addData } = useDContext();
   const form = useRef();
   const [page, setPage] = useState(0);
   const navigate = useNavigate();
@@ -32,6 +34,7 @@ function Form1() {
   };
 
   const sendEmail = (formData) => {
+    addData(formData);
     emailjs
       .send(
         "service_yonxp8k",

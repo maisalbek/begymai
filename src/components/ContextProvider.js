@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
-import { API } from "./consts/Consts";
+import { API, API2 } from "./consts/Consts";
 
 export const context = createContext();
 export const useDContext = () => {
@@ -8,6 +8,7 @@ export const useDContext = () => {
 };
 const INIT_STATE = {
   doctors: [],
+  data: [],
   objForEdit: null,
   doctorName: [],
 };
@@ -17,6 +18,11 @@ function reducer(state = INIT_STATE, action) {
       return {
         ...state,
         doctors: action.payload.data,
+      };
+    case "GET_DATA":
+      return {
+        ...state,
+        data: action.payload.data,
       };
     case "GET_OBJ_FOR_EDIT":
       return {
@@ -47,6 +53,17 @@ const ContextProvider = ({ children }) => {
       console.log(err);
     }
   };
+  const getData = async () => {
+    try {
+      let res = await axios.get(API2);
+      dispatch({
+        type: "GET_DATA",
+        payload: res,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const getNames = async () => {
     try {
       let res = await axios.get(API);
@@ -71,11 +88,27 @@ const ContextProvider = ({ children }) => {
       console.log(err);
     }
   };
+  const addData = async (obj) => {
+    try {
+      await axios.post(API2, obj);
+      getData();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const delDoctor = async (id) => {
     try {
       await axios.delete(`${API}/${id}`);
       getDoctor();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const delData = async (id) => {
+    try {
+      await axios.delete(`${API2}/${id}`);
+      getData();
     } catch (err) {
       console.log(err);
     }
@@ -106,11 +139,15 @@ const ContextProvider = ({ children }) => {
     <context.Provider
       value={{
         doctors: state.doctors,
+        data: state.data,
         objForEdit: state.objForEdit,
         doctorName: state.doctorName,
         getDoctor,
+        getData,
         addDoctor,
+        addData,
         delDoctor,
+        delData,
         idForEdit,
         saveDoctor,
         getNames,

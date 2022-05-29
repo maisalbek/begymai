@@ -13,13 +13,25 @@ import { useDContext } from "../components/ContextProvider";
 import { Link, useNavigate } from "react-router-dom";
 
 const Db = () => {
-  const { doctors, getDoctor, delDoctor, idForEdit } = useDContext();
+  const { data, getData, delData } = useDContext();
   const navigate = useNavigate();
   useEffect(() => {
-    getDoctor();
+    getData();
   }, []);
   return (
     <div>
+      <button
+        style={{
+          width: "100px",
+          height: "50px",
+          backgroundColor: "black",
+          color: "#c2c1be",
+          margin: "30px 0",
+        }}
+        onClick={() => navigate("/admin")}
+      >
+        Назад
+      </button>
       <TableContainer
         style={{ backgroundColor: "rgb(154, 137, 112)" }}
         component={Paper}
@@ -38,7 +50,7 @@ const Db = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {doctors.map((row) => (
+            {data.map((row) => (
               <TableRow
                 key={row.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -46,13 +58,13 @@ const Db = () => {
                 <TableCell width="19%" component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell width="15%">{row.surname}</TableCell>
-                <TableCell width="15%">{row.midName}</TableCell>
-                <TableCell width="20%">{row.age}</TableCell>
-                <TableCell width="20%">{row.phone}</TableCell>
-                <TableCell width="20%">{row.category}</TableCell>
+                <TableCell width="15%">{row.PIN}</TableCell>
+                <TableCell width="15%">{row.number}</TableCell>
+                <TableCell width="20%">{row.doctor}</TableCell>
+                <TableCell width="20%">{row.date}</TableCell>
+                <TableCell width="20%">{row.time}</TableCell>
                 <TableCell width="8%">
-                  <HighlightOffRoundedIcon onClick={() => delDoctor(row.id)} />
+                  <HighlightOffRoundedIcon onClick={() => delData(row.id)} />
                 </TableCell>
               </TableRow>
             ))}

@@ -69,7 +69,9 @@ const ContextProvider = ({ children }) => {
       let res = await axios.get(API);
       let names = [];
       res.data.filter((item) => {
-        names.push([item.name, item.midName, item.surname].join(" "));
+        names.push(
+          [item.surname, item.name, item.midName, item.category].join(" ")
+        );
       });
       dispatch({
         type: "GET_NAMES",

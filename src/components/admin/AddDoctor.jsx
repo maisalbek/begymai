@@ -97,33 +97,13 @@ export default function AddDoctor() {
         label={"Мобиьный телефон"}
         sx={{ backgroundColor: "#e0e0e0" }}
       />
-      <FormControl sx={{ width: "320px" }}>
-        <InputLabel id="demo-simple-select-label">Специальность</InputLabel>
-        <Select
-          value={inpValues.category}
-          name="category"
-          labelId="demo-simple-select-label"
-          label="Категория"
-          onChange={(e) => handleChange(e)}
-          sx={{ backgroundColor: "#e0e0e0" }}
-        >
-          <MenuItem sx={{ backgroundColor: "#e0e0e0" }} value="Хирург">
-            Хирург
-          </MenuItem>
-          <MenuItem sx={{ backgroundColor: "#e0e0e0" }} value="Нерволог">
-            Нерволог
-          </MenuItem>
-          <MenuItem sx={{ backgroundColor: "#e0e0e0" }} value="Кардиолог">
-            Кардиолог
-          </MenuItem>
-          <MenuItem sx={{ backgroundColor: "#e0e0e0" }} value="Стомотолог">
-            Стомотолог
-          </MenuItem>
-          <MenuItem sx={{ backgroundColor: "#e0e0e0" }} value="Детский врач">
-            Детский врач
-          </MenuItem>
-        </Select>
-      </FormControl>
+      <TextField
+        onChange={(e) => handleChange(e)}
+        value={inpValues.phone}
+        name="category"
+        label={"Специальность"}
+        sx={{ backgroundColor: "#e0e0e0" }}
+      />
       <Button
         variant="contained"
         style={{ marginTop: "5px" }}

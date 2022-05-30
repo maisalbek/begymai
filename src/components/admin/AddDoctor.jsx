@@ -99,7 +99,7 @@ export default function AddDoctor() {
       />
       <TextField
         onChange={(e) => handleChange(e)}
-        value={inpValues.phone}
+        value={inpValues.category}
         name="category"
         label={"Специальность"}
         sx={{ backgroundColor: "#e0e0e0" }}

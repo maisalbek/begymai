@@ -287,7 +287,7 @@ export default function Navbar() {
           <Button component={Link} to="/">
             <img
               width="40px"
-              src="https://www.pngkey.com/png/full/33-337638_medicine-logo-png-1-medical-logo.png"
+              src="https://scontent.ffru4-1.fna.fbcdn.net/v/t39.30808-1/275177524_324966199671915_2731770477844724158_n.jpg?stp=c482.182.1084.1085a_cp0_dst-jpg_s40x40&_nc_cat=108&ccb=1-7&_nc_sid=c6021c&_nc_ohc=rLOly4pYsB4AX8aMYaO&_nc_ht=scontent.ffru4-1.fna&oh=00_AT__cEv_pWTuDzd0dGZOXfb7_-laV3XWPEec9W3v594iWQ&oe=629A1309"
               alt=""
             />
           </Button>

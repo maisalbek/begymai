@@ -4,7 +4,7 @@
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  overflow-x: hidden;
+  overflow-x: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,8 +40,8 @@ input[type="file"] {
   background-color: white;
   padding: 10px 20px;
 }
-@media all and (max-width: 400px) {
+@media all and (max-width: 800px) {
   .lab {
-    margin: 0 5px;
+    margin: 0;
   }
 }

@@ -78,7 +78,9 @@ const Laboratory = () => {
             alignItems: "center",
           }}
         >
-          <div>
+          <div
+            style={{ padding: "0 10px", marginLeft: "20px", overflow: "auto" }}
+          >
             <TableContainer
               style={{ backgroundColor: "rgb(154, 137, 112)" }}
               component={Paper}
@@ -88,10 +90,10 @@ const Laboratory = () => {
                   style={{ backgroundColor: "rgba(71, 57, 36, 0.73)" }}
                 >
                   <TableRow>
-                    <TableCell width="25%">Врач</TableCell>
-                    <TableCell width="25%">Пациент</TableCell>
-                    <TableCell width="25%">PIN</TableCell>
-                    <TableCell width="25%">Файл</TableCell>
+                    <TableCell width="20%">Врач</TableCell>
+                    <TableCell width="20%">Пациент</TableCell>
+                    <TableCell width="20%">PIN</TableCell>
+                    <TableCell width="20%">Файл</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -103,10 +105,10 @@ const Laboratory = () => {
                             "&:last-child td, &:last-child th": { border: 0 },
                           }}
                         >
-                          <TableCell width="25%">{item.doctorName}</TableCell>
-                          <TableCell width="25%">{item.name}</TableCell>
-                          <TableCell width="25%">{item.pin}</TableCell>
-                          <TableCell width="25%">
+                          <TableCell width="20%">{item.doctorName}</TableCell>
+                          <TableCell width="20%">{item.name}</TableCell>
+                          <TableCell width="20%">{item.pin}</TableCell>
+                          <TableCell width="20%">
                             <FolderCopyIcon
                               style={{ cursor: "pointer" }}
                               onClick={() => {

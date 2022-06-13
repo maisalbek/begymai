@@ -171,6 +171,22 @@ export default function Navbar() {
           <p onClick={handleMobileMenuClose}>Врачи</p>
         </NavLink>
       </MenuItem>
+      {currentUser?.isLaborant ||
+        (currentUser?.isAdmin && (
+          <MenuItem className="menuitem">
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
+              color="inherit"
+            >
+              <LocalHospitalIcon />
+            </IconButton>
+            <NavLink to="/laboratory" className="mobile-link">
+              <p onClick={handleMobileMenuClose}>Лаборатория</p>
+            </NavLink>
+          </MenuItem>
+        ))}
+
       {currentUser?.isAdmin && (
         <MenuItem className="menuitem">
           <IconButton

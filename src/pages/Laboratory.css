@@ -40,3 +40,8 @@ input[type="file"] {
   background-color: white;
   padding: 10px 20px;
 }
+@media all and (max-width: 400px) {
+  .lab {
+    margin: 0 5px;
+  }
+}

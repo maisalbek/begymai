@@ -9,6 +9,13 @@ import AddPdf from "../components/admin/AddPdf";
 import "./Laboratory.css";
 import FolderCopyIcon from "@mui/icons-material/FolderCopy";
 import { useDContext } from "../components/ContextProvider";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 import { Worker } from "@react-pdf-viewer/core";
 // Import the main Viewer component
@@ -71,53 +78,50 @@ const Laboratory = () => {
             alignItems: "center",
           }}
         >
-          <div
-            style={{
-              width: "60%",
-              backgroundColor: "rgb(134, 137, 119)",
-              padding: "8px",
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-evenly",
-            }}
-          >
-            <span>Врач</span>
-            <span style={{ marginLeft: "10px" }}>Пациент</span>
-            <span style={{ marginLeft: "20px" }}>PIN</span>
-            <span style={{ marginLeft: "20px" }}>Файл</span>
+          <div>
+            <TableContainer
+              style={{ backgroundColor: "rgb(154, 137, 112)" }}
+              component={Paper}
+            >
+              <Table sx={{ minWidth: 320 }} aria-label="simple table">
+                <TableHead
+                  style={{ backgroundColor: "rgba(71, 57, 36, 0.73)" }}
+                >
+                  <TableRow>
+                    <TableCell width="25%">Врач</TableCell>
+                    <TableCell width="25%">Пациент</TableCell>
+                    <TableCell width="25%">PIN</TableCell>
+                    <TableCell width="25%">Файл</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {analyze && analyze.length > 0
+                    ? analyze.map((item, index) => (
+                        <TableRow
+                          key={index}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell width="25%">{item.doctorName}</TableCell>
+                          <TableCell width="25%">{item.name}</TableCell>
+                          <TableCell width="25%">{item.pin}</TableCell>
+                          <TableCell width="25%">
+                            <FolderCopyIcon
+                              style={{ cursor: "pointer" }}
+                              onClick={() => {
+                                handleClickOpen();
+                                setFile(item.file);
+                              }}
+                            />
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    : null}
+                </TableBody>
+              </Table>
+            </TableContainer>
           </div>
-          {analyze && analyze.length > 0
-            ? analyze.map((item, index) => {
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      width: "60%",
-                      backgroundColor: "rgb(154, 137, 112)",
-                      padding: "8px",
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "space-evenly",
-                    }}
-                  >
-                    <span>{item.doctorName}</span>
-                    <span style={{ marginLeft: "10px" }}>{item.name}</span>
-                    <span style={{ marginLeft: "10px" }}>{item.pin}</span>
-                    <span style={{ marginLeft: "20px" }}>
-                      <FolderCopyIcon
-                        style={{ cursor: "pointer" }}
-                        onClick={() => {
-                          handleClickOpen();
-                          setFile(item.file);
-                        }}
-                      />
-                    </span>
-                  </div>
-                );
-              })
-            : null}
         </div>
       )}
 

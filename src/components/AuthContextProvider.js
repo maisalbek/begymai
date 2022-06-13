@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase";
 import { ADMIN_EMAIL } from "./consts/Consts";
+import { Laborants } from "./consts/Consts";
 import { notify } from "./Toastify";
 import { useNavigate } from "react-router-dom";
 const authContext = createContext();
@@ -17,6 +18,7 @@ const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState({
     user: null,
     isAdmin: false,
+    isLaborant: false,
     isLogged: false,
   });
 
@@ -32,6 +34,7 @@ const AuthContextProvider = ({ children }) => {
       let newUser = {
         user: user.email,
         isAdmin: user.email === ADMIN_EMAIL ? true : false,
+        isLaborant: Laborants.includes(user.email),
         isLogged: true,
       };
       setCurrentUser(newUser);
@@ -39,6 +42,7 @@ const AuthContextProvider = ({ children }) => {
       notify("success", "Регистрация прошла успешно!");
       navigate("/");
     } catch (err) {
+      console.log(err.code);
       switch (err.code) {
         case "auth/invalid-email":
           notify("error", "Некоректная почта!");
@@ -61,6 +65,7 @@ const AuthContextProvider = ({ children }) => {
       let noUser = {
         user: null,
         isAdmin: false,
+        isLaborant: false,
         isLogged: false,
       };
       setCurrentUser(noUser);
@@ -77,6 +82,7 @@ const AuthContextProvider = ({ children }) => {
       let newUser = {
         user: user.email,
         isAdmin: user.email === ADMIN_EMAIL ? true : false,
+        isLaborant: Laborants.includes(user.email),
         isLogged: true,
       };
       setCurrentUser(newUser);
@@ -106,6 +112,7 @@ const AuthContextProvider = ({ children }) => {
         setCurrentUser({
           user: user.email,
           isAdmin: user.email === ADMIN_EMAIL ? true : false,
+          isLaborant: Laborants.includes(user.email),
           isLogged: true,
         });
       } else {

@@ -1,11 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Form.css";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import { useDContext } from "../ContextProvider";
 
 function PersonalInfo({ formData, setFormData }) {
-  const { doctorName2 } = useDContext();
+  const { doctorName2, idForPush } = useDContext();
+  const handleChange = (e) => {
+    let obj = {
+      ...formData,
+      doctor: e.target.value,
+    };
+    setFormData(obj);
+  };
   return (
     <div className="personal-info-container">
       <TextField
@@ -14,7 +21,7 @@ function PersonalInfo({ formData, setFormData }) {
         label="Выберите специалиста"
         value={formData.doctor}
         onChange={(e) => {
-          setFormData({ ...formData, doctor: e.target.value });
+          handleChange(e);
         }}
         fullWidth
       >
@@ -23,6 +30,9 @@ function PersonalInfo({ formData, setFormData }) {
             <MenuItem
               key={option.id}
               value={(option.name, option.surname, option.midName)}
+              onClick={() => {
+                idForPush(option.id);
+              }}
             >
               {option.name} {option.surname} {option.midName}
             </MenuItem>

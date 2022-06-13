@@ -6,7 +6,6 @@ import "./Admin.css";
 
 const Admin = () => {
   const [addModal, setAddModal] = useState(false);
-  const [db, setDb] = useState(false);
   const navigate = useNavigate();
   function toggle() {
     addModal ? setAddModal(false) : setAddModal(true);

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SignUpInfo from "./SignUpInfo";
 import PersonalInfo from "./PersonalInfo";
@@ -9,10 +9,16 @@ import "./Form.css";
 import { useDContext } from "../ContextProvider";
 
 function Form1() {
-  const { addData } = useDContext();
+  const { addData, objForPush, saveDoctor } = useDContext();
   const form = useRef();
   const [page, setPage] = useState(0);
   const navigate = useNavigate();
+  const [state1, setState1] = useState({});
+  useEffect(() => {
+    if (objForPush) {
+      setState1(objForPush);
+    }
+  }, [objForPush]);
   const [formData, setFormData] = useState({
     name: "",
     PIN: "",
@@ -40,6 +46,15 @@ function Form1() {
     } else {
       return <OtherInfo formData={formData} setFormData={setFormData} />;
     }
+  };
+
+  const handlePush = () => {
+    let obj = {
+      date: formData.date,
+      time: formData.time,
+    };
+    state1.busy.push(obj);
+    saveDoctor(state1);
   };
 
   const sendEmail = (formData) => {
@@ -118,6 +133,7 @@ function Form1() {
                 ) {
                   sendEmail(formData);
                   navigate("/");
+                  handlePush();
                 } else {
                   alert("Заполните поля!");
                 }

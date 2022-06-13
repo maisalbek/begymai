@@ -1,14 +1,9 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+
 import Button from "@mui/material/Button";
 import { useDContext } from "../ContextProvider";
-import Alert from "@mui/material/Alert";
-import Stack from "@mui/material/Stack";
 
 export default function AddDoctor() {
   const initValues = {

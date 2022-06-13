@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
-import { API, API2 } from "./consts/Consts";
+import { API, API2, API3 } from "./consts/Consts";
 
 export const context = createContext();
 export const useDContext = () => {
@@ -10,8 +10,10 @@ const INIT_STATE = {
   doctors: [],
   data: [],
   objForEdit: null,
+  objForPush: null,
   doctorName: [],
   doctorName2: [],
+  analyze: [],
 };
 function reducer(state = INIT_STATE, action) {
   switch (action.type) {
@@ -25,10 +27,20 @@ function reducer(state = INIT_STATE, action) {
         ...state,
         data: action.payload.data,
       };
+    case "GET_ANALYZE":
+      return {
+        ...state,
+        analyze: action.payload.data,
+      };
     case "GET_OBJ_FOR_EDIT":
       return {
         ...state,
         objForEdit: action.payload.data,
+      };
+    case "GET_OBJ_FOR_PUSH":
+      return {
+        ...state,
+        objForPush: action.payload.data,
       };
     case "GET_NAMES":
       return {
@@ -105,10 +117,29 @@ const ContextProvider = ({ children }) => {
       console.log(err);
     }
   };
+  const getAnalyze = async () => {
+    try {
+      let res = await axios.get(API3);
+      dispatch({
+        type: "GET_ANALYZE",
+        payload: res,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const addDoctor = async (obj) => {
     try {
       await axios.post(API, obj);
+      getDoctor();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const addAnalyze = async (obj) => {
+    try {
+      await axios.post(API3, obj);
       getDoctor();
     } catch (err) {
       console.log(err);
@@ -151,6 +182,17 @@ const ContextProvider = ({ children }) => {
       console.log(err);
     }
   };
+  const idForPush = async (id) => {
+    try {
+      let res = await axios.get(`${API}/${id}`);
+      dispatch({
+        type: "GET_OBJ_FOR_PUSH",
+        payload: res,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const saveDoctor = async (obj) => {
     try {
@@ -167,8 +209,12 @@ const ContextProvider = ({ children }) => {
         doctors: state.doctors,
         data: state.data,
         objForEdit: state.objForEdit,
+        objForPush: state.objForPush,
         doctorName: state.doctorName,
         doctorName2: state.doctorName2,
+        analyze: state.analyze,
+        getAnalyze,
+        idForPush,
         getDoctor,
         getData,
         addDoctor,
@@ -179,6 +225,7 @@ const ContextProvider = ({ children }) => {
         saveDoctor,
         getNames,
         getNames2,
+        addAnalyze,
       }}
     >
       {children}

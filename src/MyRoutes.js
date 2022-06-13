@@ -11,6 +11,7 @@ import EditDoctor from "./components/admin/EditDoctor";
 import Doctors from "./pages/Doctors";
 import Form from "./pages/Form";
 import Db from "./pages/Db";
+import Laboratory from "./pages/Laboratory";
 
 const MyRoutes = () => {
   return (
@@ -28,6 +29,7 @@ const MyRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/db" element={<Db />} />
+        <Route path="/laboratory" element={<Laboratory />} />
       </Route>
     </Routes>
   );

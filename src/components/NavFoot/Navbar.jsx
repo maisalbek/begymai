@@ -345,6 +345,23 @@ export default function Navbar() {
             >
               ВРАЧИ
             </Button>
+            {currentUser?.isLaborant ||
+              (currentUser?.isAdmin && (
+                <Button
+                  className="btn"
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                    fontSize: "16px",
+                  }}
+                  component={NavLink}
+                  to="/laboratory"
+                >
+                  ЛАБОРАТОРИЯ
+                </Button>
+              ))}
+
             {currentUser?.isAdmin && (
               <Button
                 className="btn"

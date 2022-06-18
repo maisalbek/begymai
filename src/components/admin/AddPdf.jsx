@@ -10,16 +10,16 @@ import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import { useDContext } from "../ContextProvider";
 
-const AddPdf = () => {
+const AddPdf = ({ currentData, handleClose3 }) => {
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
-  const { addAnalyze } = useDContext();
+  const { saveDoctor } = useDContext();
   const [pdfFile, setPdfFile] = useState(null);
   const [pdfFileError, setPdfFileError] = useState("");
   const [viewPdf, setViewPdf] = useState(null);
   const [activebtn, setActivebtn] = useState(true);
   const [inpValues, setInpValues] = useState({
     name: "",
-    doctorName: "",
+    pin: "",
     file: null,
   });
 
@@ -66,8 +66,9 @@ const AddPdf = () => {
   };
 
   const handleClick = () => {
-    addAnalyze(inpValues);
+    saveDoctor(currentData.analyze.push(inpValues));
     setInpValues({ name: "", doctorName: "", file: null });
+    handleClose3();
   };
 
   return (
@@ -89,11 +90,11 @@ const AddPdf = () => {
           className="inp1"
         />
         <input
-          type="text"
-          placeholder="Имя врача"
+          type="number"
+          placeholder="Пин"
           onChange={handleChange}
-          value={inpValues.doctorName}
-          name="doctorName"
+          value={inpValues.pin}
+          name="pin"
           className="inp1"
         />
         <br />
@@ -126,7 +127,6 @@ const AddPdf = () => {
           </Worker>
         )}
 
-        {/* render this if we have pdfFile state null   */}
         {!pdfFile && <>Файл еще не выбран!</>}
       </div>
     </div>

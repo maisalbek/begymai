@@ -9,7 +9,7 @@ import "./Form.css";
 import { useDContext } from "../ContextProvider";
 
 function Form1() {
-  const { addData, objForPush, saveDoctor } = useDContext();
+  const { objForPush, saveDoctor } = useDContext();
   const form = useRef();
   const [page, setPage] = useState(0);
   const navigate = useNavigate();
@@ -54,6 +54,14 @@ function Form1() {
       time: formData.time,
     };
     state1.busy.push(obj);
+    let obj2 = {
+      name: formData.name,
+      PIN: formData.PIN,
+      number: formData.number,
+      date: formData.date,
+      time: formData.time,
+    };
+    state1.data.push(obj2);
     saveDoctor(state1);
   };
 
@@ -67,7 +75,6 @@ function Form1() {
       )
       .then(
         (result) => {
-          addData(formData);
           console.log(result.text);
         },
         (error) => {

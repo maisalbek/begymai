@@ -10,8 +10,8 @@ import Admin from "./pages/Admin";
 import EditDoctor from "./components/admin/EditDoctor";
 import Doctors from "./pages/Doctors";
 import Form from "./pages/Form";
-import Db from "./pages/Db";
 import Laboratory from "./pages/Laboratory";
+import Room from "./pages/Room";
 
 const MyRoutes = () => {
   return (
@@ -28,8 +28,8 @@ const MyRoutes = () => {
         <Route path="/form" element={<Form />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/db" element={<Db />} />
         <Route path="/laboratory" element={<Laboratory />} />
+        <Route path="/room/:prodId" element={<Room />} />
       </Route>
     </Routes>
   );

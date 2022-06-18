@@ -14,6 +14,11 @@ export default function AddDoctor() {
     photo: "",
     phone: "",
     category: "",
+    busy: [],
+    data: [],
+    analyze: [],
+    start: null,
+    end: null,
   };
   const { addDoctor } = useDContext();
   const [inpValues, setInpValues] = React.useState(initValues);
@@ -34,7 +39,9 @@ export default function AddDoctor() {
       inpValues.surname ||
       inpValues.midName ||
       inpValues.phone ||
-      inpValues.photo
+      inpValues.photo ||
+      inpValues.start ||
+      inpValues.end
     ) {
       addDoctor(inpValues);
       setInpValues(initValues);
@@ -97,6 +104,20 @@ export default function AddDoctor() {
         value={inpValues.category}
         name="category"
         label={"Специальность"}
+        sx={{ backgroundColor: "#e0e0e0" }}
+      />
+      <TextField
+        onChange={(e) => handleChange(e)}
+        value={inpValues.start}
+        name="start"
+        label={"Начало работы"}
+        sx={{ backgroundColor: "#e0e0e0" }}
+      />
+      <TextField
+        onChange={(e) => handleChange(e)}
+        value={inpValues.end}
+        name="end"
+        label={"Конец работы"}
         sx={{ backgroundColor: "#e0e0e0" }}
       />
       <Button

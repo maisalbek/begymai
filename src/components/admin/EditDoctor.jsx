@@ -19,6 +19,8 @@ export default function EditDoctor() {
     photo: "",
     phone: "",
     category: "",
+    start: null,
+    end: null,
   };
   const { objForEdit, saveDoctor } = useDContext();
   const [editValues, setEditValues] = React.useState(initValues);
@@ -46,7 +48,9 @@ export default function EditDoctor() {
       editValues.surname ||
       editValues.midName ||
       editValues.phone ||
-      editValues.photo
+      editValues.photo ||
+      editValues.start ||
+      editValues.end
     ) {
       saveDoctor(editValues);
       setEditValues(initValues);
@@ -104,6 +108,20 @@ export default function EditDoctor() {
           value={editValues.phone}
           name="phone"
           label={"Мобиьный телефон"}
+          sx={{ backgroundColor: "#e0e0e0" }}
+        />
+        <TextField
+          onChange={(e) => handleChange(e)}
+          value={editValues.start}
+          name="start"
+          label={"Начало работы"}
+          sx={{ backgroundColor: "#e0e0e0" }}
+        />
+        <TextField
+          onChange={(e) => handleChange(e)}
+          value={editValues.end}
+          name="end"
+          label={"Конец работы"}
           sx={{ backgroundColor: "#e0e0e0" }}
         />
         <FormControl sx={{ width: "320px" }}>

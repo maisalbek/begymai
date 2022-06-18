@@ -13,7 +13,8 @@ import { useDContext } from "../ContextProvider";
 import { Link, useNavigate } from "react-router-dom";
 
 const AdminDoctors = () => {
-  const { doctors, getDoctor, delDoctor, idForEdit } = useDContext();
+  const { doctors, getDoctor, delDoctor, idForEdit, clearzapis, clearpas } =
+    useDContext();
   const navigate = useNavigate();
   useEffect(() => {
     getDoctor();
@@ -32,9 +33,11 @@ const AdminDoctors = () => {
             <TableCell width="20%">Фото</TableCell>
             <TableCell width="20%">Возраст</TableCell>
             <TableCell width="20%">Моб тел</TableCell>
-            <TableCell width="40%">Спец-ть</TableCell>
-            <TableCell></TableCell>
-            <TableCell></TableCell>
+            <TableCell width="20%">Спец-ть</TableCell>
+            <TableCell width="20%">Очистить запись</TableCell>
+            <TableCell width="20%">Очистить пациентов</TableCell>
+            <TableCell>Изменить</TableCell>
+            <TableCell>Удалить</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -54,6 +57,20 @@ const AdminDoctors = () => {
               <TableCell width="20%">{row.age}</TableCell>
               <TableCell width="20%">{row.phone}</TableCell>
               <TableCell width="20%">{row.category}</TableCell>
+              <TableCell width="20%">
+                <HighlightOffRoundedIcon
+                  onClick={() => {
+                    clearzapis(row.id);
+                  }}
+                />
+              </TableCell>
+              <TableCell width="20%">
+                <HighlightOffRoundedIcon
+                  onClick={() => {
+                    clearpas(row.id);
+                  }}
+                />
+              </TableCell>
               <TableCell width="8%">
                 <EditIcon
                   onClick={() => {

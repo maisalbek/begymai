@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
-import { API, API2, API3 } from "./consts/Consts";
+import { API, API3 } from "./consts/Consts";
 
 export const context = createContext();
 export const useDContext = () => {
@@ -71,17 +71,6 @@ const ContextProvider = ({ children }) => {
       console.log(err);
     }
   };
-  const getData = async () => {
-    try {
-      let res = await axios.get(API2);
-      dispatch({
-        type: "GET_DATA",
-        payload: res,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
   const getNames = async () => {
     try {
       let res = await axios.get(API);
@@ -145,27 +134,11 @@ const ContextProvider = ({ children }) => {
       console.log(err);
     }
   };
-  const addData = async (obj) => {
-    try {
-      await axios.post(API2, obj);
-      getData();
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const delDoctor = async (id) => {
     try {
       await axios.delete(`${API}/${id}`);
       getDoctor();
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const delData = async (id) => {
-    try {
-      await axios.delete(`${API2}/${id}`);
-      getData();
     } catch (err) {
       console.log(err);
     }
@@ -202,25 +175,41 @@ const ContextProvider = ({ children }) => {
       console.log(err);
     }
   };
+  const clearzapis = async (id) => {
+    try {
+      let res = await axios.get(`${API}/${id}`);
+      res.data.busy = [];
+      saveDoctor(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const clearpas = async (id) => {
+    try {
+      let res = await axios.get(`${API}/${id}`);
+      res.data.data = [];
+      saveDoctor(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <context.Provider
       value={{
         doctors: state.doctors,
-        data: state.data,
         objForEdit: state.objForEdit,
         objForPush: state.objForPush,
         doctorName: state.doctorName,
         doctorName2: state.doctorName2,
         analyze: state.analyze,
+        clearzapis,
+        clearpas,
         getAnalyze,
         idForPush,
         getDoctor,
-        getData,
         addDoctor,
-        addData,
         delDoctor,
-        delData,
         idForEdit,
         saveDoctor,
         getNames,

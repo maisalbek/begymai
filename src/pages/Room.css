@@ -1,0 +1,90 @@
+.leftCont {
+  width: 50%;
+  height: 500px;
+  background-color: rgba(71, 57, 36, 0.73);
+  border-radius: 30px;
+  margin-right: 20px;
+}
+.imgCont {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 30px;
+}
+.photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 25px 0 0 0;
+  margin-right: 40px;
+}
+.rightCont {
+  width: 50%;
+  height: 500px;
+  background-color: rgba(71, 57, 36, 0.73);
+  border-radius: 30px;
+}
+.graphic {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 0 30px;
+  border-radius: 0 0 0 30px;
+  background-color: #8c7c5d;
+}
+.zapisalis {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #8c7c5d;
+  margin: 0 30px;
+}
+.cat {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #8c7c5d;
+  border-radius: 0 0 30px 0;
+}
+.priem {
+  width: 200px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #8c7c5d;
+  border-radius: 30px 0 0 0;
+  margin: 30px 0 0 30px;
+}
+.priem1 {
+  width: 200px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #8c7c5d;
+  margin: 30px;
+}
+.docs {
+  width: 200px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #8c7c5d;
+  margin: 30px 30px 0 0;
+  border-radius: 0 30px 0 0;
+}

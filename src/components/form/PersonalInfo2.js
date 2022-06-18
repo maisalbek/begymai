@@ -29,7 +29,7 @@ function PersonalInfo({ formData, setFormData }) {
           doctorName2.map((option) => (
             <MenuItem
               key={option.id}
-              value={(option.name, option.surname, option.midName)}
+              value={option.name + " " + option.midName + " " + option.surname}
               onClick={() => {
                 idForPush(option.id);
               }}

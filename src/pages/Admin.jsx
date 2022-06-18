@@ -47,7 +47,6 @@ const Admin = () => {
               color: "#c2c1be",
               borderRadius: "50%",
             }}
-            onClick={() => navigate("/db")}
           >
             База данных
           </button>

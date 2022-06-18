@@ -7,9 +7,12 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { MenuItem, TextField } from "@mui/material";
 
 function OtherInfo({ formData, setFormData }) {
   const [open, setOpen] = React.useState(false);
+  const [array, setArray] = useState([]);
+  const [busytime, setBusyTime] = useState([]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -23,13 +26,21 @@ function OtherInfo({ formData, setFormData }) {
   useEffect(() => {
     if (objForPush) {
       setInfo(objForPush.busy);
-      console.log(objForPush);
     }
   }, []);
 
   useEffect(() => {
-    console.log(info);
-  }, [info]);
+    let arr = [];
+    for (let i = objForPush.start; i <= objForPush.end; i++) {
+      arr.push(i);
+    }
+    setArray(arr);
+    let a = [];
+    objForPush.busy.forEach((item) => {
+      a.push(item.time);
+    });
+    setBusyTime(a);
+  }, []);
 
   const handleChange = (e) => {
     let obj = {
@@ -40,6 +51,8 @@ function OtherInfo({ formData, setFormData }) {
   };
   return (
     <div className="other-info-container">
+      <span>График работы: </span>
+      <span>{objForPush.start + ":00-" + objForPush.end + ":00"}</span>
       <span
         style={{
           textAlign: "center",
@@ -63,17 +76,39 @@ function OtherInfo({ formData, setFormData }) {
         }}
         value={formData.date}
       />
-      <span style={{ textAlign: "start", width: "100%", marginLeft: "60px" }}>
+      {/* <span style={{ textAlign: "start", width: "100%", marginLeft: "60px" }}>
         Время
-      </span>
-      <input
+      </span> */}
+      {/* <input
         type="time"
         id="appt"
         name="time"
         onChange={(e) => {
           handleChange(e);
         }}
-      />
+      /> */}
+      <TextField
+        id="outlined-select-currency"
+        select
+        label="Выберите время"
+        value={formData.time}
+        sx={{ marginTop: "20px", width: "93%" }}
+        name="time"
+        onChange={(e) => {
+          handleChange(e);
+        }}
+      >
+        {array &&
+          array.map((option, index) => (
+            <MenuItem
+              key={index}
+              value={option}
+              sx={{ color: busytime.includes(option) ? "red" : "black" }}
+            >
+              {option + ":00"}
+            </MenuItem>
+          ))}
+      </TextField>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -90,7 +125,7 @@ function OtherInfo({ formData, setFormData }) {
             info?.map((item) => {
               return (
                 <DialogContentText id="alert-dialog-description">
-                  {item.date} в {item.time}
+                  {item.date} в {item.time + ":00"}
                 </DialogContentText>
               );
             })

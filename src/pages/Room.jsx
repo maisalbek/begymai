@@ -7,7 +7,6 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 // Import styles of default layout plugin
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
-import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 import Dialog from "@mui/material/Dialog";
 import AppBar from "@mui/material/AppBar";
@@ -17,18 +16,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import AddPdf from "../components/admin/AddPdf";
 import FolderCopyIcon from "@mui/icons-material/FolderCopy";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { API } from "../components/consts/Consts";
-import { useDContext } from "../components/ContextProvider";
 import "./Room.css";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -51,8 +42,6 @@ const Room = () => {
       setCurrentData(res.data);
     });
   }, []);
-  const [toggle, setToggle] = useState(false);
-  const navigate = useNavigate();
   const [file, setFile] = useState();
 
   const [open, setOpen] = React.useState(false);
@@ -209,7 +198,7 @@ const Room = () => {
               alignItems: "center",
             }}
           >
-            {currentData.analyze &&
+            {currentData.analyze && currentData.analyze.length > 0 ? (
               currentData.analyze.map((item, index) => {
                 return (
                   <div
@@ -236,7 +225,10 @@ const Room = () => {
                     </span>
                   </div>
                 );
-              })}
+              })
+            ) : (
+              <h1>Ничего не найдено</h1>
+            )}
           </div>
         </Dialog>
       </div>

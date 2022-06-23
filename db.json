@@ -91,8 +91,21 @@
       "phone": "0999274625",
       "category": "Стомотолог",
       "analyze": [],
-      "data": [],
-      "busy": [],
+      "data": [
+        {
+          "name": "",
+          "PIN": "",
+          "number": "",
+          "date": "",
+          "time": 9
+        }
+      ],
+      "busy": [
+        {
+          "date": "",
+          "time": 9
+        }
+      ],
       "id": 4
     },
     {

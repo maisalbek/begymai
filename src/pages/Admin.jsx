@@ -39,17 +39,6 @@ const Admin = () => {
             src="https://www.picng.com/upload/plus/png_plus_52143.png"
             alt=""
           />
-          <button
-            style={{
-              width: "65px",
-              height: "65px",
-              backgroundColor: "black",
-              color: "#c2c1be",
-              borderRadius: "50%",
-            }}
-          >
-            База данных
-          </button>
         </div>
         {addModal ? <AddDoctor /> : null}
       </div>

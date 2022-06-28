@@ -101,7 +101,7 @@ const Room = () => {
               marginLeft: "70px",
             }}
           >
-            <span style={{ fontSize: "30px" }}>Кабинет №</span>
+            <span style={{ fontSize: "25px" }}>Кабинет №</span>
             <span style={{ fontSize: "37px" }}>{currentData.id}</span>
           </div>
         </div>
@@ -140,10 +140,10 @@ const Room = () => {
         <div
           style={{
             display: "flex",
-            flexWrap: "wrap",
+            flexDirection: "column",
             padding: "30px",
-            gap: "8px",
-            overflow: "hidden",
+            maxHeight: "260px",
+            overflow: "auto",
           }}
         >
           {currentData.data &&
@@ -153,18 +153,34 @@ const Room = () => {
                   key={index}
                   style={{
                     display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                    backgroundColor: "#847a64",
+                    flexDirection: "row",
+                    justifyContent: "flex-start",
+                    backgroundColor: "#7b959b",
                     padding: "10px",
-                    width: "120px",
+                    width: "95%",
+                    borderBottom: "1px solid rgba(0, 0, 0, 0.405",
                   }}
                 >
-                  <span>{item.name}</span>
-                  <span>{item.PIN}</span>
-                  <span>{item.number}</span>
-                  <span>{item.date}</span>
-                  <span>{item.time}:00</span>
+                  <span style={{ marginRight: "7px" }}>
+                    <span className="items1"> Имя: </span>
+                    {item.name}
+                  </span>
+                  <span style={{ marginRight: "7px" }}>
+                    <span className="items1"> Пин: </span>
+                    {item.PIN}
+                  </span>
+                  <span style={{ marginRight: "7px" }}>
+                    <span className="items1"> Тел: </span>
+                    {item.number}
+                  </span>
+                  <span style={{ marginRight: "7px" }}>
+                    <span className="items1"> Дата: </span>
+                    {item.date}
+                  </span>
+                  <span style={{ marginRight: "7px" }}>
+                    <span className="items1"> Время: </span> {item.time}
+                    :00
+                  </span>
                 </div>
               );
             })}
@@ -198,6 +214,33 @@ const Room = () => {
               alignItems: "center",
             }}
           >
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                backgroundColor: "gray",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  padding: "15px 20px",
+                  margin: "10px",
+                  textAlign: "center",
+                  width: "40%",
+                  alignItems: "center",
+                  justifyContent: "space-around",
+                }}
+              >
+                <span>Пациент</span>
+                <span>ПИН</span>
+                <span style={{ textAlign: "center", marginTop: "10px" }}>
+                  Файл
+                </span>
+              </div>
+            </div>
             {currentData.analyze && currentData.analyze.length > 0 ? (
               currentData.analyze.map((item, index) => {
                 return (
@@ -205,15 +248,18 @@ const Room = () => {
                     key={index}
                     style={{
                       display: "flex",
-                      flexDirection: "column",
+                      flexDirection: "row",
                       backgroundColor: "gray",
-                      padding: "20px",
+                      padding: "10px 20px",
                       margin: "10px",
                       textAlign: "center",
+                      width: "40%",
+                      alignItems: "center",
+                      justifyContent: "space-around",
                     }}
                   >
-                    <span>Пациент: {item.name}</span>
-                    <span>ПИН: {item.pin}</span>
+                    <span>{item.name}</span>
+                    <span>{item.pin}</span>
                     <span style={{ textAlign: "center", marginTop: "10px" }}>
                       <FolderCopyIcon
                         style={{ cursor: "pointer" }}

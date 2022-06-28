@@ -48,8 +48,8 @@ input[type="file"] {
 .doctorcont {
   margin: 0 70px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 50px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 30px;
   place-items: center;
 }
 @media all and (max-width: 1200px) {

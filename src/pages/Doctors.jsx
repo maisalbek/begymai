@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useDContext } from "../components/ContextProvider";
 import "./Doctors.css";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const Doctors = () => {
   const { doctors, getDoctor, delDoctor, idForEdit } = useDContext();
@@ -23,7 +23,7 @@ const Doctors = () => {
           doctors.map((item) => (
             <Card
               key={item.id}
-              sx={{ maxWidth: 320, height: 460, margin: "10px" }}
+              sx={{ width: 300, height: 460, margin: "10px" }}
             >
               <CardMedia
                 component="img"
@@ -44,7 +44,11 @@ const Doctors = () => {
             </Card>
           ))
         ) : (
-          <h1>asas</h1>
+          <Box
+            sx={{ display: "flex", width: "100%", justifyContent: "center" }}
+          >
+            <CircularProgress />
+          </Box>
         )}
       </div>
     </div>

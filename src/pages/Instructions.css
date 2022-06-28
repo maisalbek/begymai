@@ -41,13 +41,13 @@
 }
 @keyframes pulse {
   0% {
-    background-color: rgb(177, 166, 147);
+    background-color: #7399a1;
   }
   50% {
-    background-color: rgb(164, 157, 146);
+    background: #87b0b9;
   }
   100% {
-    background-color: rgb(143, 135, 125);
+    background-color: #809499;
   }
 }
 .step1:hover {

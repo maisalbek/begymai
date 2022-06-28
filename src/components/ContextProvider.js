@@ -97,6 +97,7 @@ const ContextProvider = ({ children }) => {
 
   const addDoctor = async (obj) => {
     try {
+      console.log("add");
       await axios.post(API, obj);
       getDoctor();
     } catch (err) {

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useDContext } from "../components/ContextProvider";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import "./Laboratory.css";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const Laboratory = () => {
   const navigate = useNavigate();
@@ -18,7 +20,12 @@ const Laboratory = () => {
         doctors.map((item) => (
           <Card
             key={item.id}
-            sx={{ maxWidth: 320, height: 440, margin: "10px" }}
+            sx={{
+              width: 300,
+              height: 440,
+              margin: "10px",
+              cursor: "pointer",
+            }}
             onClick={() => {
               navigate(`/room/${item.id}`);
             }}
@@ -29,19 +36,32 @@ const Laboratory = () => {
               height="300"
               image={item.photo}
             />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+            <CardContent
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-evenly",
+                height: "30%",
+              }}
+            >
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                sx={{ fontSize: "16px" }}
+              >
                 {item.surname} {item.name} {item.midName}
               </Typography>
               <Typography gutterBottom variant="h6" component="div">
                 {"Кабинет № " + item.id}
               </Typography>
-              {/* <Room item={item} /> */}
             </CardContent>
           </Card>
         ))
       ) : (
-        <h1>asas</h1>
+        <Box sx={{ display: "flex", width: "100%", justifyContent: "center" }}>
+          <CircularProgress />
+        </Box>
       )}
     </div>
   );

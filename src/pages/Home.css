@@ -78,8 +78,18 @@ html {
   height: 4em;
   width: 250px;
   animation: wiggle 2s linear infinite;
-  background: #444 !important;
-  background: linear-gradient(top, #555, #333) !important;
+  background: #0575e6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #021b79,
+    #0575e6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #021b79,
+    #0575e6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   border: none;
   border-top: 3px solid orange !important;
   border-radius: 0 0 0.2em 0.2em;
@@ -92,7 +102,7 @@ html {
   background-color: #333 !important;
 }
 .section-2 {
-  background: rgb(154, 137, 112);
+  background: #8eaeb5;
 }
 .box2 {
   width: 100%;
@@ -149,7 +159,17 @@ html {
 }
 
 .footer {
-  background-color: rgb(110, 93, 70);
+  background: #1c92d2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #8eaeb5,
+    #1c92d2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #708e94,
+    #1c92d2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   display: flex;
   flex-direction: column;
   align-items: center;

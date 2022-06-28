@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Worker } from "@react-pdf-viewer/core";
 // Import the main Viewer component
 import { Viewer } from "@react-pdf-viewer/core";
@@ -12,7 +12,7 @@ import { useDContext } from "../ContextProvider";
 
 const AddPdf = ({ currentData, handleClose3 }) => {
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
-  const { saveDoctor } = useDContext();
+  const { addDoctor, saveDoctor } = useDContext();
   const [pdfFile, setPdfFile] = useState(null);
   const [pdfFileError, setPdfFileError] = useState("");
   const [viewPdf, setViewPdf] = useState(null);
@@ -23,6 +23,7 @@ const AddPdf = ({ currentData, handleClose3 }) => {
     file: null,
   });
 
+  useEffect(() => {}, []);
   const fileType = ["application/pdf"];
   const handlePdfFileChange = (e) => {
     let selectedFile = e.target.files[0];
@@ -66,8 +67,8 @@ const AddPdf = ({ currentData, handleClose3 }) => {
   };
 
   const handleClick = () => {
-    saveDoctor(currentData.analyze.push(inpValues));
-    setInpValues({ name: "", doctorName: "", file: null });
+    currentData.analyze.push(inpValues);
+    saveDoctor(currentData);
     handleClose3();
   };
 
@@ -78,6 +79,7 @@ const AddPdf = ({ currentData, handleClose3 }) => {
           type="file"
           className="form-control"
           required
+          value={""}
           onChange={handlePdfFileChange}
         />
         {pdfFileError && <div className="error-msg">{pdfFileError}</div>}

@@ -20,16 +20,13 @@ const AdminDoctors = () => {
     getDoctor();
   }, []);
   return doctors && doctors.length > 0 ? (
-    <TableContainer
-      style={{ backgroundColor: "rgb(154, 137, 112)" }}
-      component={Paper}
-    >
+    <TableContainer style={{ backgroundColor: "#8eaeb5" }} component={Paper}>
       <Table sx={{ minWidth: 320 }} aria-label="simple table">
-        <TableHead style={{ backgroundColor: "rgba(71, 57, 36, 0.73)" }}>
+        <TableHead style={{ backgroundColor: "#5b6b6e" }}>
           <TableRow>
             <TableCell width="20%">Имя</TableCell>
             <TableCell width="20%">Фамилия</TableCell>
-            <TableCell width="20%">Отечество</TableCell>
+            <TableCell width="20%">Отчество</TableCell>
             <TableCell width="20%">Фото</TableCell>
             <TableCell width="20%">Возраст</TableCell>
             <TableCell width="20%">Моб тел</TableCell>
